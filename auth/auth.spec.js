@@ -43,3 +43,51 @@ describe('register', function() {
         });
     });
 });
+
+describe('GET/', () => {
+    it('should give you a 404 error', () => {
+        return request(server).get('/api/auth/login')
+        .expect(404)
+        .then( res => {
+            expect(res.body)
+        })
+    })
+})
+
+describe('GET/', () => {
+    it('should give you a 400 error', () => {
+        return request(server).get('/api/auth/register')
+        .expect(404)
+        .then( res => {
+            expect(res.body)
+        })
+    })
+})
+
+describe('login', function() {
+    it('doesnt login without a password', function() {
+        return request(server)
+        .post('/api/auth/login')
+        .send({ username: 'jake', password: ''})
+        .expect(401)
+        .then( res => {
+
+            expect(res.body)
+        
+        });
+    });
+});
+
+describe('register', function() {
+    it('doesnt register without a password', function() {
+        return request(server)
+        .post('/api/auth/login')
+        .send({ username: 'jake', password: ''})
+        .expect(401)
+        .then( res => {
+
+            expect(res.body)
+        
+        });
+    });
+});
